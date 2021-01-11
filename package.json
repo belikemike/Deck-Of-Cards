@@ -1,0 +1,99 @@
+{
+  "name": "tsmodule",
+  "version": "0.0.0-semantic",
+  "description": "",
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "engines": {
+    "node": ">=6.0.0"
+  },
+  "scripts": {
+    "build": "rimraf lib && tsc -p tsconfig.build.json",
+    "test": "jest",
+    "test:watch": "jest --watchAll",
+    "lint": "tslint --project tsconfig.json --fix \"src/**/*.ts\" && prettier --write \"src/**/*.ts\"",
+    "cover": "jest --coverage",
+    "coveralls": "jest --coverage && cat ./coverage/lcov.info | coveralls",
+    "semantic-release": "semantic-release"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jeffijoe/tsmodule.git"
+  },
+  "files": [
+    "lib",
+    "LICENSE.md",
+    "README.md"
+  ],
+  "directories": {
+    "lib": "lib"
+  },
+  "keywords": [],
+  "author": "Jeff Hansen <jeff@jeffijoe.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jeffijoe/tsmodule/issues"
+  },
+  "homepage": "https://github.com/jeffijoe/tsmodule#readme",
+  "dependencies": {
+    "events": "^3.2.0",
+    "tslib": "^1.9.3"
+  },
+  "devDependencies": {
+    "@semantic-release/condition-codeship": "^1.1.0",
+    "@semantic-release/release-notes-generator": "^7.1.4",
+    "@types/jest": "^24.0.13",
+    "@types/node": "^12.19.12",
+    "coveralls": "^3.0.3",
+    "husky": "^2.3.0",
+    "jest": "^24.8.0",
+    "lint-staged": "^8.1.7",
+    "prettier": "^1.17.1",
+    "rimraf": "^2.6.3",
+    "semantic-release": "^17.3.1",
+    "ts-jest": "^26.4.4",
+    "tslint": "^5.16.0",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-config-standard": "^8.0.1",
+    "typescript": "^3.4.5"
+  },
+  "lint-staged": {
+    "*.ts": [
+      "tslint --fix --project tsconfig.json",
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "testRegex": "(/__tests__/.*\\.(test|spec))\\.(ts|tsx|js)$",
+    "collectCoverageFrom": [
+      "src/**/*.ts"
+    ],
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ],
+    "modulePaths": [
+      "src"
+    ],
+    "coverageDirectory": "<rootDir>/coverage",
+    "transform": {
+      "\\.(ts|tsx)": "ts-jest"
+    },
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "globals": {}
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  }
+}
