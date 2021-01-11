@@ -5,7 +5,6 @@ export interface DocSuits {
 export interface DocRules {
   cardsPerPlayer: number
   state: string
-  dealAll: boolean
   players: number
   deckType?: string
   dealer?: boolean

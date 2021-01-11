@@ -1,34 +1,68 @@
-> This is a Node module boilerplate using TypeScript. 
-> Remove this block and replace all instances of `tsmodule` with your package name, as well as all instances of `jeffijoe` with your Github username.
-
-# tsmodule
-
-[![npm](https://img.shields.io/npm/v/tsmodule.svg?maxAge=1000)](https://www.npmjs.com/package/tsmodule)
-[![dependency Status](https://img.shields.io/david/jeffijoe/tsmodule.svg?maxAge=1000)](https://david-dm.org/jeffijoe/tsmodule)
-[![devDependency Status](https://img.shields.io/david/dev/jeffijoe/tsmodule.svg?maxAge=1000)](https://david-dm.org/jeffijoe/tsmodule)
-[![Build Status](https://img.shields.io/travis/jeffijoe/tsmodule.svg?maxAge=1000)](https://travis-ci.org/jeffijoe/tsmodule)
-[![Coveralls](https://img.shields.io/coveralls/jeffijoe/tsmodule.svg?maxAge=1000)](https://coveralls.io/github/jeffijoe/tsmodule)
-[![npm](https://img.shields.io/npm/dt/tsmodule.svg?maxAge=1000)](https://www.npmjs.com/package/tsmodule)
-[![npm](https://img.shields.io/npm/l/tsmodule.svg?maxAge=1000)](https://github.com/jeffijoe/tsmodule/blob/master/LICENSE.md)
+> This is a TypeScript module that handles a deck of cards.
 
 # Install
 
 With `npm`:
 
 ```
-npm install tsmodule
+npm i --save git+ssh://git@github.com:belikemike/deck-of-cards.git
 ```
 
 Or with `yarn`
 
 ```
-yarn add tsmodule
+yarn add ssh://git@github.com:belikemike/deck-of-cards.git
 ```
 
 # Usage
 
-Todo...
+```typescript
+import { DeckOfCards } from 'deck-of-cards';
+import { DocRules, DocCard } from 'deck-of-cards/types';
+
+// setup a 7 card Gin Rummy with 4 players
+const rules: DocRules = {
+  // initial deal
+  cardsPerPlayer: 7,
+  // number of players
+  players: 4,
+  // initial state of cards 'face-down' | 'face-up'
+  state: 'face-down'
+};
+
+// if rules object is provided, you get a fresh deck
+
+const doc = new DeckOfCards(rules);
+
+/** DoC Events
+ * {
+ *  CARD_DEALT,
+ *  DEAL_END,
+ *  DECK_END
+ * }
+ */
+
+doc.subscribe.on(doc.EVENTS.CARD_DEALT, UICallback);
+
+/**
+ * this will create a hands object that uses 'player#'
+ * for example, 4 players would look like this:
+ * {
+ *  player1: DocCard[],
+ *  player2: DocCard[],
+ *  player3: DocCard[],
+ *  player4: DocCard[]
+ * }
+ */
+
+const hands: DocHands = doc.deal();
+
+// add the optional boolean to refresh the 'shuffled' deck
+const deck: DocCard[] = doc.deck(true);
+
+
+```
 
 # Author
 
-Jeff Hansen — [@Jeffijoe](https://twitter.com/Jeffijoe)
+Mike Clagg — [mikeclagg.com](https://mikeclagg.com)

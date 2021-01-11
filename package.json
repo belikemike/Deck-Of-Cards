@@ -1,5 +1,5 @@
 {
-  "name": "tsmodule",
+  "name": "deck-of-cards",
   "version": "0.0.0-semantic",
   "description": "",
   "main": "lib/index.js",
@@ -29,12 +29,12 @@
     "lib": "lib"
   },
   "keywords": [],
-  "author": "Jeff Hansen <jeff@jeffijoe.com>",
+  "author": "Mike Clagg <mikeclagg@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/jeffijoe/tsmodule/issues"
+    "url": "https://github.com/belikemike/deck-of-cards/issues"
   },
-  "homepage": "https://github.com/jeffijoe/tsmodule#readme",
+  "homepage": "https://github.com/belikemike/deck-of-cards#readme",
   "dependencies": {
     "events": "^3.2.0",
     "tslib": "^1.9.3"

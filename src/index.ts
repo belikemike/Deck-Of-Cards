@@ -1,5 +1,5 @@
 import SimplePubSub from './SimplePubSub'
-import { DocCard, DocHands, DocRules, DocSuits } from './DeckOfCards.types'
+import { DocCard, DocHands, DocRules, DocSuits } from './types'
 
 export const CARDS_SETUP: string[] = [
   '2',
@@ -31,9 +31,8 @@ export class DeckOfCards extends SimplePubSub {
   private _deck: any = {}
   private _dealt: any = {}
   private _rules: DocRules = {
-    cardsPerPlayer: 52,
+    cardsPerPlayer: 13,
     state: 'face-down',
-    dealAll: false,
     players: 4
   }
   private _hands: DocHands = {}
