@@ -1,5 +1,5 @@
 import SimplePubSub from './SimplePubSub'
-import { DocCard, DocHands, DocRules, DocSuits } from './typings'
+import { DocCard, DocHands, DocRules, DocSuits } from './types'
 
 export const CARDS_SETUP: string[] = [
   '2',
